@@ -13,8 +13,8 @@
       </ng-template>
 
     </ion-row>
-    <ion-row justify-content-center>
-      <button ion-button icon-only round outline>
+    <ion-row justify-content-center >
+      <button ion-button icon-only round outline (click)="getBitcoinPrice()">
         <ion-icon name="refresh"></ion-icon>
       </button>
     </ion-row>
@@ -25,7 +25,7 @@
 <ion-footer>
   <ion-item>
     <ion-label>Select Currency</ion-label>
-    <ion-select>
+    <ion-select [(ngModel)]="currency" (ionChange)="getBitcoinPrice()">
       <ion-option value="GBP">GBP</ion-option>
       <ion-option value="USD">USD</ion-option>
       <ion-option value="AUD">AUD</ion-option>
