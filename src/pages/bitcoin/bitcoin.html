@@ -1,11 +1,17 @@
 <ion-content padding>
   <ion-grid>
     <ion-row justify-content-center margin-bottom>
-      <ion-img src="assets/img/Bitcoin.svg"></ion-img>
+      <ion-img src="assets/imgs/Bitcoin.svg"></ion-img>
     </ion-row>
     <ion-row justify-content-center >
-      <h1> BTC: GBP 7000</h1>
-      <p> The average price last week was: GBP 6000</p>
+      <div *ngIf="bitcoin$ | async as bc; else loading" text-center>
+        <h1> BTC: {{bc.ask | currency: currency + " "}}</h1>
+        <p> The average price last week was: {{bc.averages.week | currency: currency + " "}}</p>
+      </div>
+      <ng-template #loading>
+        <h1>Loading... </h1>
+      </ng-template>
+
     </ion-row>
     <ion-row justify-content-center>
       <button ion-button icon-only round outline>
